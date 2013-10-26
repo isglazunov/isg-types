@@ -1,0 +1,12 @@
+{
+    "name": "isg-types",
+    "version": "0.0.1",
+    "keywords": ["event", "events", "underscore", "sync", "types", "typing", "classes", "oop"],
+    "dependencies": {
+        "underscore": "1.5.2",
+        "async": "0.2.9",
+        "isg-events": "0.0.12"
+    }, "devDependencies": {
+        "should": "2.0.2"
+    }
+}
