@@ -49,6 +49,7 @@ or
 ```js
 var MyServer = function(){};
 MyServer.prototype = new Types.Server;
+var server = new MyServer;
 ```
 
 ## server.describe(name, description[, options]);
@@ -63,7 +64,7 @@ server.describe('user', function(next, client, exports){
 ```
 
 ## Client typing
-Container type described and methods for their descriptions.
+The object `client` will have a functional initialized types.
 ```js
 var client = new Types.Client;
 ```
@@ -71,6 +72,7 @@ or
 ```js
 var MyClient = function(){};
 MyClient.prototype = new Types.Client;
+var client = new MyClient;
 ```
 
 ## client.initialize(name[, callback]);
