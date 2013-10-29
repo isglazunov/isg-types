@@ -75,12 +75,12 @@ MyClient.prototype = new Types.Client;
 var client = new MyClient;
 ```
 
-#### client.initialize(name[, callback]);
+#### client.initialize([callback]);
 Starts the initialization of all types that are contained in the array `client._isgTypes`.
 In other words, starts each by name as the event type in the object `server._isgTypesEvents`.
 The argument `callback` will be executed after the initialization of all types.
 ```js
-client.initialize('user', function(){
+client.initialize(function(types, client, exports){
     console.log('trigger');
 });
 ```
