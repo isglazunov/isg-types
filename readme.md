@@ -1,60 +1,63 @@
-# isg-types@0.0.1
+# isg-types@0.0.2
 Free typification built on isg-events module.
 
 ## Install
 
 * NPM `npm install isg-types`
-* GIT `git clone https://github.com/isglazunov/types.git`
-* download from [releases](https://github.com/isglazunov/types/releases)
+* GIT `git clone https://github.com/isglazunov/isg-types.git`
+* download from [releases](https://github.com/isglazunov/isg-types/releases)
 
 ## Require
 Depends on the modules:
 * [underscore@1.5.2](https://github.com/jashkenas/underscore)
 * [async@0.2.9](https://github.com/caolan/async)
-* [isg-events@0.0.12](https://github.com/isglazunov/events)
+* [isg-events@0.1.0](https://github.com/isglazunov/isg-events)
 
-### Node.js
-```js
-var isgEvents = require('isg-events')
-var isgTypes = require('isg-types');
-var Types = isgTypes(require('underscore'), require('async'), isgEvents(require('underscore'), require('async')));
-```
+Indirect dependency
+* [isg-connector@0.0.2](https://github.com/isglazunov/isg-connector)
 
-### Browser
+The module can be connected using all supported module [isg-connector@0.0.2](https://github.com/isglazunov/isg-connector) methods.
+
+### window (Browser)
 ```html
-<script src="isg-events.js"></script>
 <script src="isg-types.js"></script>
 ```
+
+### define (AMD/Requirejs)
 ```js
-var Events = new isgEvents(_, async);
-var Types = new isgTypes(_, async, Events);
+define(['isg-types.js'], function(isgTypes){});
 ```
 
-#### define
+### require (Node.js)
 ```js
-define(['./isg-events.js', './isg-types.js'], function(isgEvents, isgTypes){
-    var Events = new isgEvents(_, async);
-    var Types = new isgTypes(_, async, Events);
-});
+var isgTypes = require('isg-types');
 ```
 
 ## Usage
 
+### Available variables
+
+#### isgTypes.version
+Contains the current version of the module.
+
+#### isgTypes.dependencies
+Contains links to the required modules.
+
 ### Server typing
 Container type described and methods for their descriptions.
 ```js
-var server = new Types.Server;
+var server = new isgTypes.Server;
 ```
 or
 ```js
 var MyServer = function(){};
-MyServer.prototype = new Types.Server;
+MyServer.prototype = new isgTypes.Server;
 var server = new MyServer;
 ```
 
 #### server.describe(name, description[, options]);
 Description of the types of events are stored as `isg-events` variable in `server._isgTypesEvents`.
-The options are passed to the method as [events.on](https://github.com/isglazunov/events#eventsonname-callback-options).
+The options are passed to the method as `events.on`.
 ```js
 server.describe('user', function(next, client, exports){
     exports.isAdmin = function(){
@@ -66,12 +69,12 @@ server.describe('user', function(next, client, exports){
 ### Client typing
 The object `client` will have a functional initialized types.
 ```js
-var client = new Types.Client;
+var client = new isgTypes.Client;
 ```
 or
 ```js
 var MyClient = function(){};
-MyClient.prototype = new Types.Client;
+MyClient.prototype = new isgTypes.Client;
 var client = new MyClient;
 ```
 
@@ -94,5 +97,9 @@ client.as('user').isAdming() // => true;
 ```
 
 ## Versions
+
+### 0.0.2
+To connect the module used [isg-connector@0.0.2](https://github.com/isglazunov/isg-connector).
+
 ### 0.0.1
 The basic functionality.

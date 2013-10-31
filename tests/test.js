@@ -1,6 +1,6 @@
-var constructor = function(_, Types) {
-    return function(){
-        var server = new Types.Server;
+describe('isg-types', function(){
+    it('shoult be equal', function(done){
+        var server = new isgTypes.Server;
         
         server.describe("user", function(client, exports){
             exports.isAdmin = function(){
@@ -20,7 +20,7 @@ var constructor = function(_, Types) {
         var Client = function(){
             this._isgTypesServer = server;
         };
-        Client.prototype = new Types.Client;
+        Client.prototype = new isgTypes.Client;
         
         var client1 = new Client;
         client1._isgTypes = ["user"];
@@ -31,23 +31,7 @@ var constructor = function(_, Types) {
         setTimeout(function(){
             client1.admined.should.be.true;
             client1.timeouted.should.be.true;
-            console.log("done");
+            done();
         }, 500);
-    }
-}
-
-if (typeof(define) !== 'undefined' && define.amd) {
-    define(["../isg-types.js", "../node_modules/isg-events/isg-events.js"], function (isgTypes, isgEvents) {
-        constructor(_, isgTypes(_, async, isgEvents(_, async)))();
     });
-} else if(typeof(module) !== 'undefined' && module.exports) {
-    var _ = require('underscore');
-    var async = require('async');
-    var isgEvents = require('isg-events');
-    var isgTypes = require('../isg-types.js');
-    require('should');
-    
-    module.exports = constructor(_, isgTypes(_, async, isgEvents(_, async)));
-} else {
-    constructor(_, isgTypes(_, async, isgEvents(_, async)))();
-}
+});
