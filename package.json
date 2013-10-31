@@ -1,12 +1,19 @@
 {
+    "author": {
+        "name": "Ivan Sergey Glazunov",
+        "email": "isglazunov@gmail.com",
+        "url": "https://github.com/isglazunov"
+    }, 
     "name": "isg-types",
-    "version": "0.0.1",
-    "keywords": ["event", "events", "underscore", "sync", "types", "typing", "classes", "oop"],
+    "version": "0.0.2",
+    "keywords": ["event", "events", "underscore", "async", "sync", "typing", "classes", "oop", "isg"],
     "dependencies": {
-        "underscore": "1.5.2",
+        "lodash": "2.2.1",
         "async": "0.2.9",
-        "isg-events": "0.0.12"
-    }, "devDependencies": {
-        "should": "2.0.2"
+        "isg-events": "0.1.0"
+    },
+    "devDependencies": {
+        "should": "2.0.2",
+        "mocha": "1.13.0"
     }
 }

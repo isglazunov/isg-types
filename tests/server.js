@@ -1,1 +1,3 @@
-require('./test.js')();
+require('should');
+global.isgTypes = require('../isg-types.js');
+require('./test.js');
